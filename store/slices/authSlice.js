@@ -1,5 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { HYDRATE } from "next-redux-wrapper";
+import persist from '../persist';
 
 const initialState = {
     accessToken: null,
@@ -21,6 +22,7 @@ export const authSlice = createSlice({
         loggedOut:(state, action) => {
             state.accessToken = null;
             state.user = null;
+            persist.remove('accessToken')
         }
     },
 
@@ -38,6 +40,8 @@ export const authSlice = createSlice({
 export const { setAccessToken, setUser, loggedOut } = authSlice.actions;
 
 export const getAccessToken = (state) => state.auth?.accessToken
+
+export const getUser = (state) => state.auth?.user
 
 export const loggedInUser = (state) => state.auth?.user;
 

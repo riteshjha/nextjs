@@ -6,6 +6,7 @@ import PublicLayout from "../../components/layouts/PublicLayout";
 import { useProcessLoginMutation } from "../../store/reducers/authApi";
 import { setAccessToken, setUser } from "../../store/slices/authSlice";
 import { useForm } from 'react-hook-form';
+import persist from "../../store/persist";
 
 export default function Login() {
     const router = useRouter();
@@ -15,6 +16,8 @@ export default function Login() {
 
     useEffect(() => {
         if(isSuccess){
+            persist.set('accessToken', loginResponse.accessToken);
+            
             dispatch(setAccessToken(loginResponse.accessToken))
             dispatch(setUser(loginResponse.user))
 

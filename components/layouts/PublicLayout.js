@@ -9,14 +9,11 @@ export default function PublicLayout({ children }) {
 
     const accessToken = useSelector(getAccessToken)
 
-
     useEffect(() => {
         // redirect to home if already logged in
-        console.log("accessToken layout => ", accessToken);
         if (accessToken) {
             router.push('/');
         }
-
     }, []);
 
     return (
