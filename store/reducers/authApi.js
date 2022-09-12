@@ -29,12 +29,18 @@ export const authApi = createApi({
             providesTags: ['User']
         }),
 
+        'fetchNotifications': builder.query({
+            query: () => createRequest(`/notifications`),
+            transformResponse: (response) => response.body.items
+        }),
+
     })
 })
 
 export const { 
     useFetchUserQuery,
     useFetchUserByIdQuery,
+    useFetchNotificationsQuery,
     useProcessSignupMutation,
     useProcessLoginMutation
 } = authApi;
