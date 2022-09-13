@@ -3,7 +3,7 @@ import AppLayout from "../components/layouts/AppLayout"
 import { useFetchNotificationsQuery } from "../store/reducers/authApi"
 import { getUser } from "../store/slices/authSlice"
 
-export default function dashboard() {
+export default function Users() {
     const user = useSelector(getUser)
     const {data:notifications, isLoading, error} = useFetchNotificationsQuery()
     

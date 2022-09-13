@@ -3,6 +3,7 @@ import { useRouter } from 'next/router';
 
 import { useSelector } from 'react-redux';
 import { getAccessToken } from '../../store/slices/authSlice';
+import Image from 'next/image';
 
 export default function PublicLayout({ children }) {
     const router = useRouter();
@@ -14,7 +15,7 @@ export default function PublicLayout({ children }) {
         if (accessToken) {
             router.push('/');
         }
-    }, []);
+    }, [accessToken]);
 
     return (
         <section className="h-full gradient-form bg-gray-200 md:h-screen">
@@ -26,7 +27,7 @@ export default function PublicLayout({ children }) {
                                 <div className="lg:w-6/12 px-4 md:px-0">
                                     <div className="md:p-12 md:mx-6">
                                         <div className="text-center">
-                                            <img
+                                            <Image width={200} height={120}
                                                 className="mx-auto w-48"
                                                 src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/lotus.webp"
                                                 alt="logo"
