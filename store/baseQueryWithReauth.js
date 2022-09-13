@@ -2,7 +2,7 @@ import { fetchBaseQuery } from '@reduxjs/toolkit/query'
 import { loggedOut } from '../store/slices/authSlice'
 
 const baseQuery = fetchBaseQuery({
-    baseUrl: 'https://storytime.test/api',
+    baseUrl: 'https://stage.qismet.co/api',
 
     prepareHeaders: (headers, { getState }) => {
         headers.set('accept', 'application/json')
